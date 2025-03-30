@@ -1,30 +1,4 @@
 <!DOCTYPE html>
-<!-- 이 문서는 HTML5 표준을 따른다는 선언. 브라우저가 문서를 올바르게 해석하도록 도와요. -->
-
-<html lang="ko">
-<!-- HTML 문서의 뼈대가 시작되는 곳. lang="ko"는 한국어 페이지라는 뜻입니다. -->
-<head>
-  <!-- 웹 브라우저가 직접 보여주지는 않지만, 문서의 '머릿속' 정보를 담는 영역 -->
-  
-  <meta charset="UTF-8">
-  <!-- 한글이 깨지지 않도록 'UTF-8' 인코딩을 사용한다는 의미 -->
-
-  <title>내 첫 웹페이지</title>
-  <!-- 브라우저 탭에서 보이게 될 웹페이지의 제목 -->
-</head>
-
-<body>
-  <!-- 실제로 화면에 보이는 콘텐츠가 들어가는 영역 -->
-
-  <h1>안녕하세요!</h1>
-  <!-- 가장 큰 제목(Heading 1) -->
-  
-  <p>이건 내가 만든 첫 웹페이지야!</p>
-  <!-- 문단(paragraph)을 나타내며, 일반 텍스트는 주로 p 태그 안에 들어갑니다. -->
-
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -43,4 +17,29 @@
 </head>
 <body>
   <div id="welcome"></div>
-  <button id="changeNickBtn">닉
+  <button id="changeNickBtn">닉네임 다시 설정</button>
+
+  <script>
+    const storedNick = localStorage.getItem('userNickname');
+    if (!storedNick) {
+      const nick = prompt('닉네임을 입력해주세요!');
+      if (nick) {
+        localStorage.setItem('userNickname', nick);
+        document.getElementById('welcome').textContent = `${nick}님, 반갑습니다!`;
+      } else {
+        document.getElementById('welcome').textContent = '닉네임을 입력하지 않으셨습니다.';
+      }
+    } else {
+      document.getElementById('welcome').textContent = `${storedNick}님, 다시 오셨네요!`;
+    }
+
+    document.getElementById('changeNickBtn').addEventListener('click', () => {
+      const newNick = prompt('새 닉네임을 입력해주세요!');
+      if (newNick) {
+        localStorage.setItem('userNickname', newNick);
+        document.getElementById('welcome').textContent = `${newNick}님, 반갑습니다!`;
+      }
+    });
+  </script>
+</body>
+</html>
