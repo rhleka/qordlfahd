@@ -22,19 +22,19 @@
   <script>
     const storedNick = localStorage.getItem('userNickname');
     if (!storedNick) {
-      const nick = prompt('닉네임을 입력해주세요!');
+      const nick = prompt('백일몽 주식회사에 오신 것을 환영합니다. 귀하의 이름을 입력해주십시오.');
       if (nick) {
         localStorage.setItem('userNickname', nick);
         document.getElementById('welcome').textContent = `${nick}님, 반갑습니다!`;
       } else {
-        document.getElementById('welcome').textContent = '닉네임을 입력하지 않으셨습니다.';
+        document.getElementById('welcome').textContent = '이름을 입력하지 않으셨습니다.';
       }
     } else {
-      document.getElementById('welcome').textContent = `${storedNick}님, 다시 오셨네요!`;
+      document.getElementById('welcome').textContent = `${storedNick}님, 다시 오신 것을 환영합니다.`;
     }
 
     document.getElementById('changeNickBtn').addEventListener('click', () => {
-      const newNick = prompt('새 닉네임을 입력해주세요!');
+      const newNick = prompt('새 이름을 입력해주세요!');
       if (newNick) {
         localStorage.setItem('userNickname', newNick);
         document.getElementById('welcome').textContent = `${newNick}님, 반갑습니다!`;
